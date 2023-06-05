@@ -61,7 +61,7 @@
 			children = (
 				3B59742B2A26237500DB1DB3 /* TcaSwiftUIApp.swift */,
 				3BFAAEA52A2CC5A900DA83DC /* Utils */,
-				3B59742D2A26237500DB1DB3 /* ContentView.swift */,
+				B0E70AB22A2F4FB8002AB010 /* View */,
 				3B59742F2A26237600DB1DB3 /* Assets.xcassets */,
 				3B5974312A26237600DB1DB3 /* Preview Content */,
 			);
@@ -84,6 +84,14 @@
 				3BFAAEA82A2CCBB800DA83DC /* GitHubApi.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B0E70AB22A2F4FB8002AB010 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B59742D2A26237500DB1DB3 /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
