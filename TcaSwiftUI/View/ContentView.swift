@@ -62,21 +62,24 @@ struct ContentView: View {
                             send: AppAction.searchQueryEditing
                         )
                     )
-                    
-                }
-            }
-            VStack {
-                Text("Count: \(viewStore.count)")
-                HStack {
-                    Button(action: { viewStore.send(.decrement) }) {
-                        Text("Decrement")
+                    .onChange(of: viewStore.searchQuery) { _ in
+                        viewStore.send(.searchQueryEditing(viewStore.searchQuery))
                     }
-                    Button(action: { viewStore.send(.increment) }) {
-                        Text("Increment")
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.asciiCapable)
+                    .padding()
+                    Spacer()
+                    List(viewStore.users) { user in
+                        NavigationLink(destination: Text(":TODO")) {
+//                            UserRow(user: user)
+                        }
+                    }
+                    .refreshable {
+                        viewStore.send(.searchQueryEditing(viewStore.searchQuery))
                     }
                 }
+                .navigationTitle("GitHubユーザーをさがす")
             }
-            .padding()
         }
     }
 }
@@ -84,9 +87,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(store: Store(
-            initialState: AppState(),
+            initialState: AppState(users: [User.mockUser], searchQuery: ""),
             reducer: appReducer,
-            environment: ()
+            environment: AppEnvironment()
         ))
     }
 }
