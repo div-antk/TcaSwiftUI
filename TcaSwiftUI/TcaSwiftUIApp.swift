@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TcaSwiftUIApp: App {
     var body: some Scene {
+        // ViewにStoreのインスタンスを渡す
         WindowGroup {
-            ContentView()
+            ContentView(
+                store: Store(
+                    initialState: AppState(),
+                    reducer: appReducer.debug(),
+                    environment: AppEnvironment()
+                )
+            )
         }
     }
 }

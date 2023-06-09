@@ -71,7 +71,7 @@ struct ContentView: View {
                     Spacer()
                     List(viewStore.users) { user in
                         NavigationLink(destination: Text(":TODO")) {
-//                            UserRow(user: user)
+                            UserRow(user: user)
                         }
                     }
                     .refreshable {
